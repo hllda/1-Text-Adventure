@@ -34,21 +34,26 @@ namespace TextAdventure
             // Displays the intro based on the initialization
             Intro();
 
-            string lastAction = "";
+            string action = "";
 
             // The game runs until quit is true
             do
             {
                 
-                PlayerAction(lastAction);
+                action = PlayerAction();
+             //   PlayerAction(lastAction);
                 Console.Clear();
-                Console.WriteLine(lastAction);
-                Console.WriteLine("I cannot do that...");
+                Console.WriteLine(action);
+                
 
-                if(lastAction.Contains("quit"))
+                if(action.Contains("quit"))
                 {
                     quit = true;
                 }
+
+
+                Console.WriteLine("I cannot do that...");
+
             } while(quit == false);
 
 
@@ -57,14 +62,10 @@ namespace TextAdventure
             Console.Clear();
         }
 
-
-
-
         public static void Intro()
         {
             Console.WriteLine();
         }
-
 
         public static bool CheckOS()
         {
@@ -92,8 +93,8 @@ namespace TextAdventure
             // Makes the cursor invisible
             Console.CursorVisible = false;
 
-            int height = 25;
-            int width = 80;
+            int height = 30;
+            int width = 120;
 
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width, height);
@@ -136,33 +137,30 @@ namespace TextAdventure
         public static void SetupWindows()
         {
             // Changes the window title to the title of the game
-            Console.Title = "Transfer C1OO%MPLETE (Windows)";
+            Console.Title = "Transfer C100%MPLETE (Windows)";
         }
 
         public static void SetupOSX()
         {
             // Changes the window title to the title of the game
-            Console.Title = "Transfer C1OO%MPLETE (OSX)";
+            Console.Title = "Transfer C100%MPLETE (OSX)";
         }
 
         public static void SetupOther()
         {
             // Changes the window title to the title of the game
-            Console.Title = "Transfer C1OO%MPLETE (Other)";
+            Console.Title = "Transfer C100%MPLETE (Other)";
         }
 
-
-
-        public static string PlayerAction(string lastAction)
+        public static string PlayerAction()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("What do I want to do?");
             Console.CursorVisible = true;
-            lastAction = Console.ReadLine();
+            string action = Console.ReadLine().ToLower();
             Console.CursorVisible = false;
             Console.ForegroundColor = ConsoleColor.White;
-            return lastAction;
+            return action;
         }
-        
     }
 }
