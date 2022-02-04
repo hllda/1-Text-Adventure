@@ -18,56 +18,43 @@ Comments:
 
 DONT
 - forget to have fun :)
-
-
  */
 
-namespace TextAdventure
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            bool quit = false;
-            Initialization();
+// PLACEHOLDING OF CODE
+/*
+ 
+ bool quit = false;
             
+            string border = File.ReadAllText("Border.txt");
+            File.ReadAllText("Border.txt");
             // Displays the intro based on the initialization
             Intro();
 
             string action = "";
 
             // The game runs until quit is true
-            do
-            {
-                
-                action = PlayerAction();
-             //   PlayerAction(lastAction);
-                Console.Clear();
-                Console.WriteLine(action);
-                
-
-                if(action.Contains("quit"))
-                {
-                    quit = true;
-                }
 
 
-                Console.WriteLine("I cannot do that...");
 
-            } while(quit == false);
-
-
-     
-            Console.ReadKey();
-            Console.Clear();
-        }
-
-        public static void Intro()
+      public static void SetupWindows()
         {
-            Console.WriteLine();
+            // Changes the window title to the title of the game
+            Console.Title = "Transfer C100%MPLETE (Windows)";
         }
 
-        public static bool CheckOS()
+        public static void SetupOSX()
+        {
+            // Changes the window title to the title of the game
+            Console.Title = "Transfer C100%MPLETE (OSX)";
+        }
+
+        public static void SetupOther()
+        {
+            // Changes the window title to the title of the game
+            Console.Title = "Transfer C100%MPLETE (Other)";
+        }
+        
+    public static bool CheckOS()
         {
             // Windows
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == true)
@@ -88,39 +75,14 @@ namespace TextAdventure
             }
         }
 
-        public static void Initialization()
-        {
-            // Makes the cursor invisible
-            Console.CursorVisible = false;
-
-            int height = 30;
-            int width = 120;
-
-            Console.SetWindowSize(width, height);
-            Console.SetBufferSize(width, height);
-
-            string title = "Title";
-            string border = "Border";
-
-            //string title = File.ReadAllText("Title.txt");
-            // string border = File.ReadAllText("Border.txt");
-
-
-
-            Console.WriteLine(border);
-            Console.SetCursorPosition(1, 3);
-            Console.WriteLine(title);
-
-
-
-            // Sets a bool to true or false depending on what system you are running the game on
+                       // Sets a bool to true or false depending on what system you are running the game on
             bool runningOnWindows = CheckOS();
             bool runningOnOSX = CheckOS();
 
             // Does a setup based on the outcome of checking the OS
             if (runningOnWindows == true)
             {
-                SetupWindows(); 
+                SetupWindows();
             }
 
             else if (runningOnOSX == true)
@@ -131,36 +93,127 @@ namespace TextAdventure
             else
             {
                 SetupOther();
-            }
-        }
+            } 
 
-        public static void SetupWindows()
+ */
+
+
+namespace TextAdventure
+{
+    class Program
+    { 
+        const ConsoleColor NarrativeColor = ConsoleColor.Gray;
+        const ConsoleColor PromptColor = ConsoleColor.White;
+        const int PrintPauseMilliseconds = 50;
+
+        static void Main()
         {
-            // Changes the window title to the title of the game
-            Console.Title = "Transfer C100%MPLETE (Windows)";
-        }
+            bool exit = false;
+            
+            //
+            Initialization();
 
-        public static void SetupOSX()
+            //
+            Introduction();
+
+            //
+           // Start();
+
+            //Gameloop
+            do
+            {
+                HandlePlayerAction();
+                Console.SetCursorPosition(0, 0);
+
+            } while (exit == false);
+
+            Console.ReadKey();
+            Console.Clear();
+        }
+        public static void Initialization()
         {
-            // Changes the window title to the title of the game
-            Console.Title = "Transfer C100%MPLETE (OSX)";
+            // Makes the cursor invisible
+            Console.CursorVisible = false;
+
+            int height = 45;
+            int width = 120;
+
+            Console.SetWindowSize(width, height);
+            Console.SetBufferSize(width, height);
+
+            string title = "Title";
+
+
+            //string title = File.ReadAllText("Title.txt");
+
+
+
+
+
+            Console.SetCursorPosition(1, 3);
+            Console.WriteLine(title);
+
+
+
+
         }
 
-        public static void SetupOther()
+        public static void Introduction()
         {
-            // Changes the window title to the title of the game
-            Console.Title = "Transfer C100%MPLETE (Other)";
+            Console.WriteLine();
         }
 
-        public static string PlayerAction()
+        public static void HandlePlayerAction()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("What do I want to do?");
+            Console.WriteLine("What will I do?");
             Console.CursorVisible = true;
             string action = Console.ReadLine().ToLower();
             Console.CursorVisible = false;
             Console.ForegroundColor = ConsoleColor.White;
-            return action;
+
+
+
+            Console.Clear();
+
+            Console.WriteLine("I cannot do that...");
+
+
         }
+
+        public static void HandleGameRules()
+        {
+
+        }
+
+        static void Print(string text)
+        {
+
+        }
+
+        public static void HandleMoving()
+        {
+        }
+
+        public static void HandleLooking()
+        {
+        }
+
+        public static void HandleTaking()
+        {
+        }
+
+        public static void HandleDropping()
+        {
+        }
+
+        public static void HandleTalking()
+        {
+        }
+
+        public static void HandleHelping()
+        {
+        }
+
     }
 }

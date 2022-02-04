@@ -10,4 +10,10 @@
     <Content Include="bin\Debug\netcoreapp3.1\Border.txt" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Border.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
