@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
-using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using System.Threading;
 
 /*
 Project Coding Conventions
@@ -14,7 +14,7 @@ DO
 
 Comments:
 - Capitalized first letter, no punctation except commas
-- Always starts with a verb
+- Almost always starts with a verb
 
 DONT
 - forget to have fun :)
@@ -22,20 +22,7 @@ DONT
 
 // PLACEHOLDING OF CODE
 /*
- 
- bool quit = false;
-            
-            string border = File.ReadAllText("Border.txt");
-            File.ReadAllText("Border.txt");
-            // Displays the intro based on the initialization
-            Intro();
-
-            string action = "";
-
-            // The game runs until quit is true
-
-
-
+       
       public static void SetupWindows()
         {
             // Changes the window title to the title of the game
@@ -101,35 +88,33 @@ DONT
 namespace TextAdventure
 {
     class Program
-    { 
-        const ConsoleColor NarrativeColor = ConsoleColor.Gray;
-        const ConsoleColor PromptColor = ConsoleColor.White;
-        const int PrintPauseMilliseconds = 50;
-
+    {
+        const ConsoleColor narrativeColor = ConsoleColor.Gray;
+        const ConsoleColor promptColor = ConsoleColor.White;
+        const int printPauseTime = 50;
+        static bool shouldQuit = false;
+        static string input;
         static void Main()
         {
-            bool exit = false;
-            
             //
             Initialization();
 
             //
-            Introduction();
-
-            //
-           // Start();
+            Intro();
 
             //Gameloop
             do
             {
                 HandlePlayerAction();
-                Console.SetCursorPosition(0, 0);
 
-            } while (exit == false);
+                HandleGameRules();
+
+            } while (shouldQuit == false);
 
             Console.ReadKey();
             Console.Clear();
         }
+
         public static void Initialization()
         {
             // Makes the cursor invisible
@@ -140,45 +125,144 @@ namespace TextAdventure
 
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width, height);
-
-            string title = "Title";
-
-
-            //string title = File.ReadAllText("Title.txt");
-
-
-
-
-
-            Console.SetCursorPosition(1, 3);
-            Console.WriteLine(title);
-
-
-
-
         }
 
-        public static void Introduction()
+        public static void Intro()
         {
-            Console.WriteLine();
+            // Reads the file containing the title art
+            string title = File.ReadAllText("Title.txt");
+
+            // Displays the title
+            Console.Write(title);
+            Console.ReadKey();
+            Console.Clear();
+
+            Console.ForegroundColor = narrativeColor;
+            Print("This is a story about a man named Sta...");
         }
 
         public static void HandlePlayerAction()
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("What will I do?");
+            // Asks the player what they want to do
+            Print("What will I do?");
+            Print("");
+
+            // The fancy lil symbol showing the player they can write
+            Console.Write("> ");
+
+            // Shows cursor to indicate input for the player
             Console.CursorVisible = true;
-            string action = Console.ReadLine().ToLower();
+
+            // Reads the input from the player
+            input = Console.ReadLine().ToLowerInvariant();
+
+            // Prevents input from being empty, aka idiot proofing for my own sake
+            if (input == "")
+            {
+                return;
+            }
+
+            // Hides cursor
             Console.CursorVisible = false;
-            Console.ForegroundColor = ConsoleColor.White;
 
+            string[] inputSplit = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            string verb = inputSplit[0];
 
+            // Reacts based on the player input
+            switch (verb)
+            {
+                case "move":
+                case "go":
+                case "head":
+                    HandleMoving("");
+                    break;
 
-            Console.Clear();
+                case "north":
+                case "n":
+                    HandleMoving("n");
+                    break;
 
-            Console.WriteLine("I cannot do that...");
+                case "south":
+                case "s":
+                    HandleMoving("s");
+                    break;
 
+                case "west":
+                case "w":
+                    HandleMoving("w");
+                    break;
 
+                case "east":
+                case "e":
+                    HandleMoving("e");
+                    break;
+
+                case "northwest":
+                case "nw":
+                    
+                    HandleMoving("nw");
+                    break;
+
+                case "northeast":
+                case "ne":
+                    HandleMoving("ne");
+                    break;
+
+                case "southwest":
+                case "sw":
+                    HandleMoving("sw");
+                    break;
+
+                case "southeast":
+                case "se":
+                    HandleMoving("se");
+                    break;
+
+                // Looking
+                case "look":
+                case "watch":
+                case "see":
+                case "look at":
+                case "view":
+                    HandleLooking();
+                    break;
+
+                // Taking
+                case "take":
+                case "get":
+                case "accuire":
+                    HandleTaking();
+                    break;
+
+                // Using
+                case "use":
+                    HandleUsing();
+                    break;
+
+                // Dropping
+                case "drop":
+                case "dispose":
+                case "trash":
+                    HandleDropping();
+                    break;
+
+                // Helping
+                case "help":
+                    HandleHelping();
+                    break;
+
+                // Exiting the game
+                case "end":
+                case "quit":
+                case "exit":
+                    Print("See you later...");
+                    shouldQuit = true;
+                    break;
+
+                default:
+                    Print("Hmm...");
+                    break;
+            }
         }
 
         public static void HandleGameRules()
@@ -186,34 +270,56 @@ namespace TextAdventure
 
         }
 
+        // Using WriteLine
         static void Print(string text)
         {
+            // Splits the lines based on the width of the window
+            int maximumLine = Console.WindowWidth - 1;
+            MatchCollection lineMatches = Regex.Matches(text, @"(.{1," + maximumLine + @"})(?:\s|$)");
+
+            // Output each line with a small delay
+            foreach (Match match in lineMatches)
+            {
+                Console.WriteLine(match.Groups[0].Value);
+                Thread.Sleep(printPauseTime);
+            }
 
         }
 
-        public static void HandleMoving()
+        // Handles movement
+        public static void HandleMoving(string direction)
         {
+            Print("Moving");
+        }
+
+        public static void HandleUsing()
+        {
+            Print("Using");
         }
 
         public static void HandleLooking()
         {
+            Print("Looking");
         }
 
         public static void HandleTaking()
         {
+            Print("Taking");
         }
 
         public static void HandleDropping()
         {
+            Print("Dropping");
         }
 
         public static void HandleTalking()
         {
+            Print("Talking");
         }
 
         public static void HandleHelping()
         {
+            Print("Helping");
         }
-
     }
 }
