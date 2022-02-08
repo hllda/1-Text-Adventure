@@ -1,0 +1,92 @@
+Void
+Name: Void
+Description: This is the void, a place of nothingness, you are not supposed to be here.
+Directions:
+
+Inventory
+Name: Inventory
+Description: This is your inventory. You store things that you pick up here.
+Directions:
+
+MainHall
+Name: Main hall
+Description: This is the main hall
+Directions:
+N:
+NW:
+W:
+SW:
+S:
+SE:
+E:
+NE:
+
+EntranceHall
+Name: Entrance hall
+Description: This is the entrance
+Directions:
+
+MessHall,
+Name: Mess hall
+Description: This is the mess hall
+Directions:
+
+Bathroom
+Name: Bathroom
+Description: This is the bathroom
+Directions:
+
+SouthLab
+Name: South lab
+Description: This is the southern laboratory
+Directions:
+
+WestLab
+Name: West lab
+Description: This is the western laboratory
+Directions:
+
+StorageRoom
+Name: Storage room
+Description: This is the storage room
+Directions:
+
+Freezer
+Name: Freezer
+Description: This is the freezer
+Directions:
+
+EastLab
+Name: East lab
+Description: This is the eastern laboratory
+Directions:
+
+Heater
+Name: Heater
+Description: This is the heater
+Directions:
+
+Greenhouse
+Name: Greenhouse
+Description: This is the greenhouse
+Directions:
+
+Patio
+Name: Patio
+Description: This is the patio
+Directions:
+
+NorthLab
+Name: North lab
+Description: This is the this is the northern laboratory
+Directions:
+
+VatHall
+Name: Vat hall
+Description: This is the vat hall
+Directions:
+
+Vat
+Name: Vat
+Description: This is the vat
+Directions:

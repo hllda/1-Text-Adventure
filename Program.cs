@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -87,13 +88,56 @@ DONT
 
 namespace TextAdventure
 {
+    enum LocationId
+    {
+        Void,
+        Inventory,
+        MainHall,
+        EntranceHall,
+        MessHall,
+        Bathroom,
+        SouthLab,
+        WestLab,
+        StorageRoom,
+        Freezer,
+        EastLab,
+        Heater,
+        Greenhouse,
+        Patio,
+        NorthLab,
+        VatHall,
+        Vat,
+    }
+
+    class LocationData
+    {
+        // Data dictionaries
+        static Dictionary<LocationId, LocationData> LocationsData =
+        new Dictionary<LocationId, LocationData>();
+
+        // Current state
+        static LocationId CurrentLocationId = LocationId.Vat;
+
+        public LocationId Id;
+        public string Name;
+        public string Description;
+
+        LocationId location = Enum.Parse<LocationId>(locationIdText);
+
+        
+    }
+
     class Program
     {
-        const ConsoleColor narrativeColor = ConsoleColor.Gray;
-        const ConsoleColor promptColor = ConsoleColor.White;
+        const ConsoleColor narrativeColor = ConsoleColor.DarkCyan;
+        const ConsoleColor promptColor = ConsoleColor.Cyan;
         const int printPauseTime = 50;
         static bool shouldQuit = false;
         static string input;
+
+        
+
+
         static void Main()
         {
             //
@@ -320,6 +364,15 @@ namespace TextAdventure
         public static void HandleHelping()
         {
             Print("Helping");
+        }
+
+        static void DisplayLocation()
+        {
+            Console.Clear();
+
+            // Display current location description.
+            LocationData currentLocationData = LocationsData[CurrentLocationId];
+            Print(currentLocationData.Description);
         }
     }
 }
