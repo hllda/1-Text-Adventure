@@ -109,23 +109,26 @@ namespace TextAdventure
         Vat,
     }
 
+    enum Direction
+    {
+        North,
+        South,
+        West,
+        East,
+        NorthWest,
+        NorthEast,
+        SouthWest,
+        SouthEast,
+    }
+
     class LocationData
     {
-        // Data dictionaries
-        static Dictionary<LocationId, LocationData> LocationsData =
-        new Dictionary<LocationId, LocationData>();
-
-        // Current state
-        static LocationId CurrentLocationId = LocationId.Vat;
-
         public LocationId Id;
         public string Name;
         public string Description;
-
-        LocationId location = Enum.Parse<LocationId>(locationIdText);
-
-        
+        public Dictionary<Direction, LocationId> Directions;
     }
+
 
     class Program
     {
@@ -135,8 +138,13 @@ namespace TextAdventure
         static bool shouldQuit = false;
         static string input;
 
-        
+        // Data dictionaries
+        static Dictionary<LocationId, LocationData> LocationsData = new Dictionary<LocationId, LocationData>();
 
+        // Current state
+        static LocationId CurrentLocationId = LocationId.Vat;
+
+        LocationId location = Enum.Parse<LocationId>(File.ReadAllText("Locations.txt"));
 
         static void Main()
         {
@@ -243,7 +251,7 @@ namespace TextAdventure
 
                 case "northwest":
                 case "nw":
-                    
+
                     HandleMoving("nw");
                     break;
 
@@ -373,6 +381,46 @@ namespace TextAdventure
             // Display current location description.
             LocationData currentLocationData = LocationsData[CurrentLocationId];
             Print(currentLocationData.Description);
+
+            // Extract property and potentially value.
+            MatchCollection matches = Regex.Matches(dataLines[currentLineIndex], @"(\w+): *(.*)?");
+            string property = matches[0].Groups[1].Value;
+            string value = matches[0].Groups[2]?.Value;
+
+            // Store value into data structure.
+            switch (property)
+            {
+                case "Name":
+                    currentLocationData.Name = value;
+                    break;
+
+                case "Description":
+                    currentLocationData.Description = value;
+                    break;
+
+                case "Directions":
+                    // Directions are listed in separate lines
+                    // with format "  direction: destination".
+                    do
+                    {
+                        // Continue while the next line is a directions line.
+                        MatchCollection directionsLineMatches = Regex.Matches(dataLines[currentLineIndex + 1], @"[ \t]+(\w+): *(.*)");
+
+                        if (directionsLineMatches.Count == 0) break;
+
+                        // Store parsed data into the directions dictionary.
+                        Direction direction = Enum.Parse<Direction>(directionsLineMatches[0].Groups[1].Value);
+                        
+                        LocationId destination = Enum.Parse<LocationId>(directionsLineMatches[0].Groups[2].Value);
+                       
+                        currentLocationData.Directions[direction] = destination;
+
+                        currentLineIndex++;
+
+                    } while (currentLineIndex + 1 < dataLines.Length);
+                    break;
+            }
+
         }
     }
 }
