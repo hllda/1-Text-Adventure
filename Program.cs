@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading;
 
@@ -24,70 +25,12 @@ DONT
 // PLACEHOLDING OF CODE
 /*
        
-      public static void SetupWindows()
-        {
-            // Changes the window title to the title of the game
-            Console.Title = "Transfer C100%MPLETE (Windows)";
-        }
-
-        public static void SetupOSX()
-        {
-            // Changes the window title to the title of the game
-            Console.Title = "Transfer C100%MPLETE (OSX)";
-        }
-
-        public static void SetupOther()
-        {
-            // Changes the window title to the title of the game
-            Console.Title = "Transfer C100%MPLETE (Other)";
-        }
-        
-    public static bool CheckOS()
-        {
-            // Windows
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == true)
-            {
-                return true;
-            }
-
-            // OSX
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true)
-            {
-                return true;
-            }
-            
-            // Unsupported
-            else
-            {
-                return false;
-            }
-        }
-
-                       // Sets a bool to true or false depending on what system you are running the game on
-            bool runningOnWindows = CheckOS();
-            bool runningOnOSX = CheckOS();
-
-            // Does a setup based on the outcome of checking the OS
-            if (runningOnWindows == true)
-            {
-                SetupWindows();
-            }
-
-            else if (runningOnOSX == true)
-            {
-                SetupOSX();
-            }
-
-            else
-            {
-                SetupOther();
-            } 
 
  */
 
-
-namespace TextAdventure
+namespace TransferC100MPLETE
 {
+    // Names of all locations
     enum LocationId
     {
         Void,
@@ -109,6 +52,13 @@ namespace TextAdventure
         Vat,
     }
 
+    // Names of all things, items and objects
+    enum ThingId
+    {
+
+    }
+
+    // Possible directions
     enum Direction
     {
         North,
@@ -121,6 +71,13 @@ namespace TextAdventure
         SouthEast,
     }
 
+    // Goals to finish the game
+    enum Goal
+    {
+
+    }
+
+    // Data about locations
     class LocationData
     {
         public LocationId Id;
@@ -129,7 +86,26 @@ namespace TextAdventure
         public Dictionary<Direction, LocationId> Directions;
     }
 
+    // Data about things
+    class ThingData
+    {
+        public ThingId Id;
+        public string Name;
+        public string Description;
+        public LocationId StartingLocationId;
+    }
 
+    // Data that has been parsed
+    class ParsedData
+    {
+        public string Id;
+        public string Name;
+        public string Description;
+        public Dictionary<Direction, LocationId> Directions;
+        public LocationId StartingLocationId;
+    }
+
+    // Here the program starts :D
     class Program
     {
         const ConsoleColor narrativeColor = ConsoleColor.DarkCyan;
@@ -138,33 +114,36 @@ namespace TextAdventure
         static bool shouldQuit = false;
         static string input;
 
+        LocationId location = Enum.Parse<LocationId>(File.ReadAllText("Locations.txt"));
+
+        string locations = File.ReadAllText("Locations.txt");
+
+
+
+       // LocationId locatione = Enum.Parse<LocationId>(locationIdText);
+
         // Data dictionaries
         static Dictionary<LocationId, LocationData> LocationsData = new Dictionary<LocationId, LocationData>();
 
         // Current state
         static LocationId CurrentLocationId = LocationId.Vat;
 
-        LocationId location = Enum.Parse<LocationId>(File.ReadAllText("Locations.txt"));
-
         static void Main()
         {
-            //
+            // Initialization
             Initialization();
 
-            //
+            // Displays the intro
             Intro();
 
-            //Gameloop
+            Console.ReadKey();
+
+            // Gameloop
             do
             {
                 HandlePlayerAction();
-
                 HandleGameRules();
-
-            } while (shouldQuit == false);
-
-            Console.ReadKey();
-            Console.Clear();
+            } while (!shouldQuit);
         }
 
         public static void Initialization()
@@ -177,10 +156,31 @@ namespace TextAdventure
 
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width, height);
+
+            // Sets a bool to true or false depending on what system you are running the game on
+            bool runningOnWindows = CheckOS();
+            bool runningOnOSX = CheckOS();
+
+            // Does a setup based on the outcome of checking the OS
+            if (runningOnWindows == true)
+            {
+                SetupWindows();
+            }
+
+            else if (runningOnOSX == true)
+            {
+                SetupOSX();
+            }
+
+            else
+            {
+                SetupOther();
+            }
         }
 
         public static void Intro()
         {
+            Console.ForegroundColor = promptColor;
             // Reads the file containing the title art
             string title = File.ReadAllText("Title.txt");
 
@@ -191,6 +191,8 @@ namespace TextAdventure
 
             Console.ForegroundColor = narrativeColor;
             Print("This is a story about a man named Sta...");
+            Print("Story");
+            Print("More story");
         }
 
         public static void HandlePlayerAction()
@@ -217,8 +219,11 @@ namespace TextAdventure
             // Hides cursor
             Console.CursorVisible = false;
 
-            string[] inputSplit = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            string verb = inputSplit[0];
+            // Analyze the command by assuming the first word is a verb (or similar instruction).
+            string[] words = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            string verb = words[0];
+
 
             // Reacts based on the player input
             switch (verb)
@@ -338,6 +343,15 @@ namespace TextAdventure
 
         }
 
+        static void DisplayLocation()
+        {
+            Console.Clear();
+
+            // Display current location description.
+            LocationData currentLocationData = LocationsData[CurrentLocationId];
+            Print(currentLocationData.Description);
+        }
+
         // Handles movement
         public static void HandleMoving(string direction)
         {
@@ -374,53 +388,44 @@ namespace TextAdventure
             Print("Helping");
         }
 
-        static void DisplayLocation()
+        public static void SetupWindows()
         {
-            Console.Clear();
+            // Changes the window title to the title of the game
+            Console.Title = "Transfer C100%MPLETE (Windows)";
+        }
 
-            // Display current location description.
-            LocationData currentLocationData = LocationsData[CurrentLocationId];
-            Print(currentLocationData.Description);
+        public static void SetupOSX()
+        {
+            // Changes the window title to the title of the game
+            Console.Title = "Transfer C100%MPLETE (OSX)";
+        }
 
-            // Extract property and potentially value.
-            MatchCollection matches = Regex.Matches(dataLines[currentLineIndex], @"(\w+): *(.*)?");
-            string property = matches[0].Groups[1].Value;
-            string value = matches[0].Groups[2]?.Value;
+        public static void SetupOther()
+        {
+            // Changes the window title to the title of the game
+            Console.Title = "Transfer C100%MPLETE (Other)";
+        }
 
-            // Store value into data structure.
-            switch (property)
+        public static bool CheckOS()
+        {
+            // Windows
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == true)
             {
-                case "Name":
-                    currentLocationData.Name = value;
-                    break;
-
-                case "Description":
-                    currentLocationData.Description = value;
-                    break;
-
-                case "Directions":
-                    // Directions are listed in separate lines
-                    // with format "  direction: destination".
-                    do
-                    {
-                        // Continue while the next line is a directions line.
-                        MatchCollection directionsLineMatches = Regex.Matches(dataLines[currentLineIndex + 1], @"[ \t]+(\w+): *(.*)");
-
-                        if (directionsLineMatches.Count == 0) break;
-
-                        // Store parsed data into the directions dictionary.
-                        Direction direction = Enum.Parse<Direction>(directionsLineMatches[0].Groups[1].Value);
-                        
-                        LocationId destination = Enum.Parse<LocationId>(directionsLineMatches[0].Groups[2].Value);
-                       
-                        currentLocationData.Directions[direction] = destination;
-
-                        currentLineIndex++;
-
-                    } while (currentLineIndex + 1 < dataLines.Length);
-                    break;
+                return true;
             }
 
+            // OSX
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true)
+            {
+                return true;
+            }
+
+            // Unsupported
+            else
+            {
+                return false;
+            }
         }
+
     }
 }
