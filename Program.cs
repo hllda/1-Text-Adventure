@@ -6,104 +6,15 @@ using System.Text.RegularExpressions;
 using System.Threading;
 
 /*
-Project Coding Conventions
-DO 
-- camelCasing on everything, except methods which use PascalCasing
+Coding Conventions
+- camelCasing for everything except Methods
+- curly brackets on their own line
+- 
+*/
 
-- capitalize functions
-- curly brackets always on their own line
-
-
-Comments:
-- Capitalized first letter, no punctation except commas
-- Almost always starts with a verb
-
-DONT
-- forget to have fun :)
- */
-
-// PLACEHOLDING OF CODE
 /*
-       
-
- */
-
-namespace TransferC100MPLETE
+   namespace TransferC100MPLETE
 {
-    // Names of all locations
-    enum LocationId
-    {
-        Void,
-        Inventory,
-        MainHall,
-        EntranceHall,
-        MessHall,
-        Bathroom,
-        SouthLab,
-        WestLab,
-        StorageRoom,
-        Freezer,
-        EastLab,
-        Heater,
-        Greenhouse,
-        Patio,
-        NorthLab,
-        VatHall,
-        Vat,
-    }
-
-    // Names of all things, items and objects
-    enum ThingId
-    {
-
-    }
-
-    // Possible directions
-    enum Direction
-    {
-        North,
-        South,
-        West,
-        East,
-        NorthWest,
-        NorthEast,
-        SouthWest,
-        SouthEast,
-    }
-
-    // Goals to finish the game
-    enum Goal
-    {
-
-    }
-
-    // Data about locations
-    class LocationData
-    {
-        public LocationId Id;
-        public string Name;
-        public string Description;
-        public Dictionary<Direction, LocationId> Directions;
-    }
-
-    // Data about things
-    class ThingData
-    {
-        public ThingId Id;
-        public string Name;
-        public string Description;
-        public LocationId StartingLocationId;
-    }
-
-    // Data that has been parsed
-    class ParsedData
-    {
-        public string Id;
-        public string Name;
-        public string Description;
-        public Dictionary<Direction, LocationId> Directions;
-        public LocationId StartingLocationId;
-    }
 
     // Here the program starts :D
     class Program
@@ -156,26 +67,6 @@ namespace TransferC100MPLETE
 
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width, height);
-
-            // Sets a bool to true or false depending on what system you are running the game on
-            bool runningOnWindows = CheckOS();
-            bool runningOnOSX = CheckOS();
-
-            // Does a setup based on the outcome of checking the OS
-            if (runningOnWindows == true)
-            {
-                SetupWindows();
-            }
-
-            else if (runningOnOSX == true)
-            {
-                SetupOSX();
-            }
-
-            else
-            {
-                SetupOther();
-            }
         }
 
         public static void Intro()
@@ -225,100 +116,7 @@ namespace TransferC100MPLETE
             string verb = words[0];
 
 
-            // Reacts based on the player input
-            switch (verb)
-            {
-                case "move":
-                case "go":
-                case "head":
-                    HandleMoving("");
-                    break;
-
-                case "north":
-                case "n":
-                    HandleMoving("n");
-                    break;
-
-                case "south":
-                case "s":
-                    HandleMoving("s");
-                    break;
-
-                case "west":
-                case "w":
-                    HandleMoving("w");
-                    break;
-
-                case "east":
-                case "e":
-                    HandleMoving("e");
-                    break;
-
-                case "northwest":
-                case "nw":
-
-                    HandleMoving("nw");
-                    break;
-
-                case "northeast":
-                case "ne":
-                    HandleMoving("ne");
-                    break;
-
-                case "southwest":
-                case "sw":
-                    HandleMoving("sw");
-                    break;
-
-                case "southeast":
-                case "se":
-                    HandleMoving("se");
-                    break;
-
-                // Looking
-                case "look":
-                case "watch":
-                case "see":
-                case "look at":
-                case "view":
-                    HandleLooking();
-                    break;
-
-                // Taking
-                case "take":
-                case "get":
-                case "accuire":
-                    HandleTaking();
-                    break;
-
-                // Using
-                case "use":
-                    HandleUsing();
-                    break;
-
-                // Dropping
-                case "drop":
-                case "dispose":
-                case "trash":
-                    HandleDropping();
-                    break;
-
-                // Helping
-                case "help":
-                    HandleHelping();
-                    break;
-
-                // Exiting the game
-                case "end":
-                case "quit":
-                case "exit":
-                    Print("See you later...");
-                    shouldQuit = true;
-                    break;
-
-                default:
-                    Print("Hmm...");
-                    break;
+           
             }
         }
 
@@ -340,7 +138,6 @@ namespace TransferC100MPLETE
                 Console.WriteLine(match.Groups[0].Value);
                 Thread.Sleep(printPauseTime);
             }
-
         }
 
         static void DisplayLocation()
@@ -352,80 +149,220 @@ namespace TransferC100MPLETE
             Print(currentLocationData.Description);
         }
 
-        // Handles movement
-        public static void HandleMoving(string direction)
+      
+    }
+}
+*/
+
+namespace TransferC100MPLETE
+{
+    class Program
+    {
+        static bool quit = false;
+        const ConsoleColor NarrativeColor = ConsoleColor.DarkCyan;
+        const ConsoleColor PromptColor = ConsoleColor.Cyan;
+        const int PrintPauseMilliseconds = 50;
+      
+        static void Main()
         {
-            Print("Moving");
+            
+            Initialize();
+            Intro();
+
+            // Gameloop
+            do
+            {
+                HandlePlayerAction();
+                HandleGameRules();
+            } while (!quit);
         }
 
-        public static void HandleUsing()
+        static void Initialize()
+        {
+            // Hides the cursor
+            Console.CursorVisible = false;
+
+        }
+
+        static void Intro()
+        {
+            // Display title screen.
+            string titleArt = File.ReadAllText("TitleArt.txt");
+            Console.Write(titleArt);
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        static void HandlePlayerAction()
+        {
+            Print("What will I do?");
+            Console.Write(">");
+
+            Console.CursorVisible = true;
+            string command = Console.ReadLine().ToLowerInvariant();
+            Console.CursorVisible = false;
+
+            Console.Clear();
+
+            string[] words = command.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            string verb = words[0];
+
+            // Reacts based on the player input
+            switch (verb)
+            {
+                case "move":
+                case "go":
+                case "head":
+                    HandleMove("");
+                    break;
+
+                case "north":
+                case "n":
+                    HandleMove("n");
+                    break;
+
+                case "south":
+                case "s":
+                    HandleMove("");
+                    break;
+
+                case "west":
+                case "w":
+                    HandleMove("");
+                    break;
+
+                case "east":
+                case "e":
+                    HandleMove("");
+                    break;
+
+                case "northwest":
+                case "nw":
+
+                    HandleMove("");
+                    break;
+
+                case "northeast":
+                case "ne":
+                    HandleMove("");
+                    break;
+
+                case "southwest":
+                case "sw":
+                    HandleMove("");
+                    break;
+
+                case "southeast":
+                case "se":
+                    HandleMove("");
+                    break;
+
+                // Looking
+                case "look":
+                case "watch":
+                case "see":
+                case "look at":
+                case "view":
+                    HandleLook();
+                    break;
+
+                // Taking
+                case "take":
+                case "get":
+                case "accuire":
+                    HandleTake();
+                    break;
+
+                // Using
+                case "use":
+                    HandleUse();
+                    break;
+
+                // Dropping
+                case "drop":
+                case "dispose":
+                case "trash":
+                    HandleDrop();
+                    break;
+
+                // Helping
+                case "help":
+                    HandleHelp();
+                    break;
+
+                // Exiting the game
+                case "end":
+                case "quit":
+                case "exit":
+                    Reply("See you soon...");
+                    quit = true;
+                    break;
+
+                default:
+                    Reply("Hmm...");
+                    break;
+
+            }
+        }
+
+        static void HandleGameRules()
+        {
+
+        }       
+
+        static void Print(string text)
+        {
+            // Split text into lines that don't exceed the window width.
+            int maximumLineLength = Console.WindowWidth - 1;
+            MatchCollection lineMatches = Regex.Matches(text, @"(.{1," +maximumLineLength + @"})(?:\s|$)");
+
+            // Output each line with a small delay.
+            foreach (Match match in lineMatches)
+            {
+                Console.WriteLine(match.Groups[0].Value);
+                Thread.Sleep(PrintPauseMilliseconds);
+            }
+        }
+
+        static void Reply(string text)
+        {
+            Print(text);
+            Print("");
+        }
+            
+        static void HandleMove(string direction)
+        {
+                Print("Moving " + direction);
+        }
+
+        public static void HandleUse()
         {
             Print("Using");
         }
 
-        public static void HandleLooking()
+        public static void HandleLook()
         {
             Print("Looking");
         }
 
-        public static void HandleTaking()
+        public static void HandleTake()
         {
             Print("Taking");
         }
 
-        public static void HandleDropping()
+        public static void HandleDrop()
         {
             Print("Dropping");
         }
 
-        public static void HandleTalking()
+        public static void HandleTalk()
         {
             Print("Talking");
         }
 
-        public static void HandleHelping()
+        public static void HandleHelp()
         {
             Print("Helping");
         }
-
-        public static void SetupWindows()
-        {
-            // Changes the window title to the title of the game
-            Console.Title = "Transfer C100%MPLETE (Windows)";
-        }
-
-        public static void SetupOSX()
-        {
-            // Changes the window title to the title of the game
-            Console.Title = "Transfer C100%MPLETE (OSX)";
-        }
-
-        public static void SetupOther()
-        {
-            // Changes the window title to the title of the game
-            Console.Title = "Transfer C100%MPLETE (Other)";
-        }
-
-        public static bool CheckOS()
-        {
-            // Windows
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == true)
-            {
-                return true;
-            }
-
-            // OSX
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true)
-            {
-                return true;
-            }
-
-            // Unsupported
-            else
-            {
-                return false;
-            }
-        }
-
     }
 }

@@ -1,0 +1,31 @@
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\bin\Debug\net6.0\TransferC100MPLETE.exe
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\bin\Debug\net6.0\TransferC100MPLETE.deps.json
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\bin\Debug\net6.0\TransferC100MPLETE.runtimeconfig.json
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\bin\Debug\net6.0\TransferC100MPLETE.dll
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\bin\Debug\net6.0\TransferC100MPLETE.pdb
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\obj\Debug\net6.0\TransferC100MPLETE.csproj.AssemblyReference.cache
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\obj\Debug\net6.0\TransferC100MPLETE.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\obj\Debug\net6.0\TransferC100MPLETE.AssemblyInfoInputs.cache
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\obj\Debug\net6.0\TransferC100MPLETE.AssemblyInfo.cs
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\obj\Debug\net6.0\TransferC100MPLETE.csproj.CoreCompileInputs.cache
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\obj\Debug\net6.0\TransferC100MPLETE.dll
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\obj\Debug\net6.0\refint\TransferC100MPLETE.dll
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\obj\Debug\net6.0\TransferC100MPLETE.pdb
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\obj\Debug\net6.0\TransferC100MPLETE.genruntimeconfig.cache
+D:\Projects\2 Text-Adventure-TransferC100MPLETE\TransferC100MPLETE\obj\Debug\net6.0\ref\TransferC100MPLETE.dll
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\bin\Debug\net6.0\TransferC100MPLETE.exe
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\bin\Debug\net6.0\TransferC100MPLETE.deps.json
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\bin\Debug\net6.0\TransferC100MPLETE.runtimeconfig.json
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\bin\Debug\net6.0\TransferC100MPLETE.dll
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\bin\Debug\net6.0\TransferC100MPLETE.pdb
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\obj\Debug\net6.0\TransferC100MPLETE.csproj.AssemblyReference.cache
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\obj\Debug\net6.0\TransferC100MPLETE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\obj\Debug\net6.0\TransferC100MPLETE.AssemblyInfoInputs.cache
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\obj\Debug\net6.0\TransferC100MPLETE.AssemblyInfo.cs
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\obj\Debug\net6.0\TransferC100MPLETE.csproj.CoreCompileInputs.cache
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\obj\Debug\net6.0\TransferC100MPLETE.dll
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\obj\Debug\net6.0\refint\TransferC100MPLETE.dll
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\obj\Debug\net6.0\TransferC100MPLETE.pdb
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\obj\Debug\net6.0\TransferC100MPLETE.genruntimeconfig.cache
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\obj\Debug\net6.0\ref\TransferC100MPLETE.dll
+C:\Users\Hilda\Documents\Projects\TransferC100MPLETERewrite\bin\Debug\net6.0\TitleArt.txt
