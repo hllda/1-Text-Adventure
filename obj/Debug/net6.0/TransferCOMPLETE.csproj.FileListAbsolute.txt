@@ -1,0 +1,24 @@
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\TransferCOMPLETE.exe
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\AsciiArt.txt
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\Border.txt
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\Locations.txt
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\Map.txt
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\Modified Map.txt
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\TermsOfService.txt
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\Things.txt
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\Title0.txt
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\Title100.txt
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\TransferCOMPLETE.deps.json
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\TransferCOMPLETE.runtimeconfig.json
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\TransferCOMPLETE.dll
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\bin\Debug\net6.0\TransferCOMPLETE.pdb
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\obj\Debug\net6.0\TransferCOMPLETE.csproj.AssemblyReference.cache
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\obj\Debug\net6.0\TransferCOMPLETE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\obj\Debug\net6.0\TransferCOMPLETE.AssemblyInfoInputs.cache
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\obj\Debug\net6.0\TransferCOMPLETE.AssemblyInfo.cs
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\obj\Debug\net6.0\TransferCOMPLETE.csproj.CoreCompileInputs.cache
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\obj\Debug\net6.0\TransferCOMPLETE.dll
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\obj\Debug\net6.0\refint\TransferCOMPLETE.dll
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\obj\Debug\net6.0\TransferCOMPLETE.pdb
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\obj\Debug\net6.0\TransferCOMPLETE.genruntimeconfig.cache
+C:\Users\Hilda\Documents\Projects\1-Text-adventure-Transfer-COMPLETE\obj\Debug\net6.0\ref\TransferCOMPLETE.dll

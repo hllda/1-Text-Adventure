@@ -1,0 +1,179 @@
+﻿Void
+Name: Void
+Description: This is the void, a place of nothingness, you are not supposed to be here.
+Art:
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│               Void                                                                               │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+Directions:
+
+Inventory
+Name: Inventory
+Description: This is your inventory. You store things that you pick up here.
+Art:
+┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│              Inventory                                                                           │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+│                                                                                                  │
+└──────────────────────────────────────────────────────────────────────────────────────────────────┘
+Directions:
+
+MainHall
+Name: Main hall
+Description: This is the main hall.
+Directions:
+	North: NorthLab
+	South: EntranceHall
+	West: WestLab
+	East: EastLab
+   	NorthWest: StorageRoom
+
+EntranceHall
+Name: Entrance hall
+Description: This is the entrance.
+Directions:
+	North: MainHall
+	West: MessHall
+	East: Bathroom
+	South: MainDoor
+	SouthWest: SecurityRoom
+
+MessHall
+Name: Mess hall
+Description: This is the mess hall.
+Directions:
+	East: EntranceHall
+
+SecurityRoom
+Name: Security room
+Description: This is the security room.
+Directions:
+	NorthWest: EntranceHall
+
+Bathroom
+Name: Bathroom
+Description: This is the bathroom. There is something odd about the south wall.
+Directions:
+	West: EntranceHall
+
+SouthLab
+Name: South lab
+Description: This is the southern laboratory.
+Directions:
+	North: Bathroom
+
+WestLab
+Name: West lab
+Description: This is the western laboratory.
+Directions:
+	West: Freezer
+	East: MainHall
+
+StorageRoom
+Name: Storage room
+Description: This is the storage room.
+Directions:
+	SouthEast: MainHall
+
+Freezer
+Name: Freezer
+Description: This is the freezer.
+Directions:
+	East: WestLab
+
+EastLab
+Name: East lab
+Description: This is the eastern laboratory.
+Directions:
+	North: Greenhouse
+	West: MainHall
+	East: Heater
+
+Heater
+Name: Heater
+Description: This is the heater.
+Directions:
+	West: EastLab
+
+Greenhouse
+Name: Greenhouse
+Description: This is the greenhouse.
+Directions:
+	South: EastLab
+	West: Patio
+
+Patio
+Name: Patio
+Description: This is the patio.
+Directions:
+	West: Greenhouse
+
+NorthLab
+Name: North lab
+Description: This is the this is the northern laboratory.
+Directions:
+	North: VatHall
+	South: MainHall
+
+VatHall
+Name: Vat hall
+Description: This is the vat hall.
+Directions:
+	South: NorthLab
+
+Vat
+Name: Vat
+Description: This is the vat.
+Directions:
+
+MainDoor
+Name: Main door
+Description: This seems to be the main entrance and exit of this facility. It is locked...

@@ -1,0 +1,24 @@
+﻿None
+Name: None
+Description: Description of thing, hint of usage
+StartingLocation: Void
+
+All
+Name: All items
+Description: All items on the current location
+StartingLocation: Void
+
+Button
+Name: Button
+Description: This button might open the vat, maybe I should press it.
+StartingLocation: MainHall
+
+Keycard
+Name: Keycard
+Description: This keycard has a name you do not recognize, and a photo of an unfamiliar face.
+StartingLocation: MainHall
+
+JarOfButter
+Name: Jar of butter
+Description: It's a hearty meal
+StartingLocation: MainHall
